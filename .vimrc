@@ -47,6 +47,8 @@
 """"""""""
 " General
 """"""""""
+" Set utf-8 encoding for trailing whitespace character
+set encoding=utf8
 
 set history=500
 
