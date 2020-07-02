@@ -47,8 +47,6 @@
 """"""""""
 " General
 """"""""""
-" Set utf-8 encoding for trailing whitespace character
-set encoding=utf8
 
 set history=500
 
@@ -76,7 +74,8 @@ set mouse=a
 set scrolloff=7
 
 " Highlight trailing whitespace
-set list listchars=trail:·
+" Show tabs with bar
+set list listchars=tab:\│\ ,trail:·
 
 """"""""""
 " Buffers / Tabs
@@ -121,3 +120,18 @@ set shiftwidth=4
 set tabstop=4
 
 set autoindent
+
+""""""""""
+" gvim
+""""""""""
+
+set guifont=SauceCodeProNerdFontComplete-Regular:h14
+
+""""""""""
+" Plugins (vim-plug)
+""""""""""
+
+call plug#begin('~/.vim/plugged')
+Plug 'ycm-core/YouCompleteMe'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+call plug#end()
