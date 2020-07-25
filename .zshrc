@@ -1,8 +1,23 @@
 eval "$(starship init zsh)"
 
-alias sshp='ssh wu1497@data.cs.purdue.edu'
-alias sshs='ssh 68.54.125.163'
-alias ls='ls -G'  # colorful ls
-alias python='/usr/local/bin/python3'
+alias ls='ls --color=auto'  # colorful ls
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# base16-shell color scheme
+# only needed to be run once
+BASE16_SHELL="$HOME/.config/base16-shell/"
+BASE16_SHELL_SET_BACKGROUND=false
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# enable history saving
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=1000
+setopt INC_APPEND_HISTORY_TIME
+
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey -v '^?' backward-delete-char
+bindkey -a '^L' clear-screen
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

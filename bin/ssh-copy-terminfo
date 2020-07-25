@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eu
+
+infocmp "$TERM" | ssh "$@" "sudo tic /dev/stdin"

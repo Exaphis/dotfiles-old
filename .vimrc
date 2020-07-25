@@ -77,6 +77,18 @@ set scrolloff=7
 " Show tabs with bar
 set list listchars=tab:\│\ ,trail:·
 
+set showcmd
+
+""""""""""
+" Remaps
+""""""""""
+
+let mapleader=" "
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :x<CR>
+nnoremap <leader>q :q
+nnoremap <leader>nh :noh<CR>
+
 """"""""""
 " Buffers / Tabs
 """"""""""
@@ -122,16 +134,31 @@ set tabstop=4
 set autoindent
 
 """"""""""
-" gvim
-""""""""""
-
-set guifont=SauceCodeProNerdFontComplete-Regular:h14
-
-""""""""""
 " Plugins (vim-plug)
 """"""""""
 
 call plug#begin('~/.vim/plugged')
 Plug 'ycm-core/YouCompleteMe'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'chriskempson/base16-vim'
 call plug#end()
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+""""""""""
+" gvim
+""""""""""
+
+set guifont=SauceCodePro\ Nerd\ Font\ 13
+
+"""""""""
+" Themes
+"""""""""
+let base16colorspace=256
+
+colorscheme base16-default-dark
+
+" Enable transparency
+hi Normal ctermbg=none
+hi NonText ctermbg=none
