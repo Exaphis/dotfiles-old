@@ -16,6 +16,10 @@ HISTSIZE=5000
 SAVEHIST=1000
 setopt INC_APPEND_HISTORY_TIME
 
+transfer () {
+    curl "https://bashupload.com/`basename ${1}`" --data-binary "@${1}"
+}
+
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey -v '^?' backward-delete-char
 bindkey -a '^L' clear-screen

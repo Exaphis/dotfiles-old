@@ -88,6 +88,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>q :q
 nnoremap <leader>nh :noh<CR>
+nnoremap <leader>p "+p
 
 """"""""""
 " Buffers / Tabs
