@@ -138,14 +138,14 @@ set autoindent
 " Plugins (vim-plug)
 """"""""""
 
-call plug#begin('~/.vim/plugged')
-Plug 'ycm-core/YouCompleteMe'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'chriskempson/base16-vim'
-call plug#end()
+"" call plug#begin('~/.vim/plugged')
+"" Plug 'ycm-core/YouCompleteMe'
+"" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+"" Plug 'chriskempson/base16-vim'
+"" call plug#end()
 
 " YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
+"" let g:ycm_autoclose_preview_window_after_completion = 1
 
 """"""""""
 " gvim
@@ -158,7 +158,7 @@ set guifont=SauceCodePro\ Nerd\ Font\ 13
 """""""""
 let base16colorspace=256
 
-colorscheme base16-default-dark
+"" colorscheme base16-default-dark
 
 " Enable transparency
 hi Normal ctermbg=none
