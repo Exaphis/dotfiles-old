@@ -121,12 +121,10 @@ syntax enable
 " Indentation
 """"""""""
 
+set smarttab
+
 " Expand tab to spaces
 set expandtab
-
-" Delete 'shiftwidth' worth of spaces with backspace at start of line
-" Make t
-set smarttab
 
 " Set tab to be 4 spaces
 set shiftwidth=4
@@ -134,32 +132,35 @@ set tabstop=4
 
 set autoindent
 
-""""""""""
-" Plugins (vim-plug)
-""""""""""
+if !empty($VIM_ENABLE_ADDONS)
+    """"""""""
+    " Plugins (vim-plug)
+    """"""""""
 
-call plug#begin('~/.vim/plugged')
-Plug 'ycm-core/YouCompleteMe'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'chriskempson/base16-vim'
-call plug#end()
+    call plug#begin('~/.vim/plugged')
+    Plug 'ycm-core/YouCompleteMe'
+    Plug 'chriskempson/base16-vim'
+    call plug#end()
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
+    " YouCompleteMe
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_enable_diagnostic_signs = 0
+    let g:ycm_enable_diagnostic_highlighting = 0
 
-""""""""""
-" gvim
-""""""""""
+    """"""""""
+    " gvim
+    """"""""""
 
-set guifont=SauceCodePro\ Nerd\ Font\ 13
+    set guifont=SauceCodePro\ Nerd\ Font\ 13
 
-"""""""""
-" Themes
-"""""""""
-let base16colorspace=256
+    """""""""
+    " Themes
+    """""""""
 
-colorscheme base16-default-dark
+    let base16colorspace=256
+    colorscheme base16-bright
 
-" Enable transparency
-hi Normal ctermbg=none
-hi NonText ctermbg=none
+    " Enable transparency
+    hi Normal ctermbg=none
+    hi NonText ctermbg=none
+endif

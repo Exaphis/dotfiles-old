@@ -1,7 +1,5 @@
 eval "$(starship init zsh)"
 
-alias ls='ls -G'  # colorful ls
-
 # base16-shell color scheme
 # only needed to be run once
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -22,8 +20,33 @@ transfer () {
     curl "https://bashupload.com/`basename ${1}`" --data-binary "@${1}"
 }
 
+# enable vi mode for the zsh line editor
+bindkey -v
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey -v '^?' backward-delete-char
 bindkey -a '^L' clear-screen
 
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# OS-specific commands
+case `uname` in
+Darwin)
+    ln -sf "$HOME/.config/kitty/kitty_macos.conf" "$HOME/.config/kitty/kitty.conf"
+
+    alias ls='ls -G'  # colorful ls
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # jenv
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
+
+    # n
+    export N_PREFIX="$HOME/n"
+    export PATH="$HOME/bin:$N_PREFIX/bin:$PATH"  # ensure n's node is picked up first
+    ;;
+Linux)
+    ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
+
+    alias ls='ls --color=auto'  # colorful ls
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+esac
+
