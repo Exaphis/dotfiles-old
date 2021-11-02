@@ -20,6 +20,8 @@ transfer () {
     curl "https://bashupload.com/`basename ${1}`" --data-binary "@${1}"
 }
 
+alias vi='vim'
+
 # enable vi mode for the zsh line editor
 bindkey -v
 bindkey '^R' history-incremental-pattern-search-backward
@@ -57,7 +59,7 @@ Linux)
     ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
 
     alias ls='ls --color=auto'  # colorful ls
-    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
 esac
 
