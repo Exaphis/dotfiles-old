@@ -26,6 +26,9 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey -v '^?' backward-delete-char
 bindkey -a '^L' clear-screen
 
+# bare dotfiles setup
+alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
 # OS-specific commands
 case `uname` in
 Darwin)
