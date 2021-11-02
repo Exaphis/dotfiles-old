@@ -59,6 +59,7 @@ Linux)
     ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
 
     alias ls='ls --color=auto'  # colorful ls
+    alias open='detach xdg-open'
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
 esac
