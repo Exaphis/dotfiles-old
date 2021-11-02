@@ -27,7 +27,15 @@ bindkey -v '^?' backward-delete-char
 bindkey -a '^L' clear-screen
 
 # bare dotfiles setup
-alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+function config() {
+    if [ "$1" = "status" ]; then
+        git --git-dir=$HOME/.dotfiles --work-tree=$HOME status -uno
+    elif [ "$1" = "status-all" ]; then
+        git --git-dir=$HOME/.dotfiles --work-tree=$HOME status
+    else
+        git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@
+    fi
+}
 
 # OS-specific commands
 case `uname` in
