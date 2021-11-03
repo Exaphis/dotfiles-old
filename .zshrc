@@ -4,15 +4,14 @@ else
     export PS1="%F{green}%n@%m%f:%F{blue}%~%f%(?..%F{red})$%f "
 fi
 
-if [ -d "$HOME/.config/base16-shell/" ]; then
-    # base16-shell color scheme
-    # only needed to be run once
-    BASE16_SHELL="$HOME/.config/base16-shell/"
-    BASE16_SHELL_SET_BACKGROUND=false
-    [ -n "$PS1" ] && \
-        [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-            eval "$("$BASE16_SHELL/profile_helper.sh")"
+# Base16 shell initialization
+BASE16_SHELL="$HOME/.config/base16-shell/"
+BASE16_SHELL_SET_BACKGROUND=false
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+if type "base16_default-dark" > /dev/null; then
     base16_default-dark
 fi
 
