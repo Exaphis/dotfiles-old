@@ -11,6 +11,7 @@ Darwin)
 Linux)
     # enable addons if on home system, disable if anywhere else
     if cat /etc/os-release | grep 'Manjaro' > /dev/null; then
+        export ZSH_HOME="yes"
         export VIM_ENABLE_ADDONS="yes"
     fi
 

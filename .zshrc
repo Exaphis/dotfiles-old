@@ -1,14 +1,20 @@
-eval "$(starship init zsh)"
+if type "starship" > /dev/null; then
+    eval "$(starship init zsh)"
+else
+    export PS1="%F{green}%n@%m%f:%F{blue}%~%f%(?..%F{red})$%f "
+fi
 
-# base16-shell color scheme
-# only needed to be run once
-BASE16_SHELL="$HOME/.config/base16-shell/"
-BASE16_SHELL_SET_BACKGROUND=false
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+if [ -d "$HOME/.config/base16-shell/" ]; then
+    # base16-shell color scheme
+    # only needed to be run once
+    BASE16_SHELL="$HOME/.config/base16-shell/"
+    BASE16_SHELL_SET_BACKGROUND=false
+    [ -n "$PS1" ] && \
+        [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+            eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-base16_default-dark
+    base16_default-dark
+fi
 
 # enable history saving
 HISTFILE=~/.zsh_history
@@ -56,11 +62,15 @@ Darwin)
     export PATH="$HOME/bin:$N_PREFIX/bin:$PATH"  # ensure n's node is picked up first
     ;;
 Linux)
-    ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
-
     alias ls='ls --color=auto'  # colorful ls
-    alias open='detach xdg-open'
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # only enable on home system
+    if [[ -v ZSH_HOME ]]; then
+        ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
+        alias open='detach xdg-open'
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+
     ;;
 esac
 
