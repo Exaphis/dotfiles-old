@@ -59,6 +59,10 @@ Darwin)
     # n
     export N_PREFIX="$HOME/n"
     export PATH="$HOME/bin:$N_PREFIX/bin:$PATH"  # ensure n's node is picked up first
+
+    # pyenv
+    eval "$(pyenv init -)"
+    alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
     ;;
 Linux)
     alias ls='ls --color=auto'  # colorful ls
