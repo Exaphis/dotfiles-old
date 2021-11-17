@@ -70,6 +70,17 @@ Linux)
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     fi
 
+    # print irssi unread messages (fnotify)
+    irc_msgs="$HOME/.irssi/fnotify"
+    if [[ -f "$irc_msgs" ]]; then
+        echo ""
+        if [[ -s "$irc_msgs" ]]; then
+            echo "There are $(cat "$irc_msgs" | wc -l | awk '{$1=$1;print}') unread IRC messages."
+            echo -n "" > "$irc_msgs"
+        else
+            echo "There are no unread IRC messages."
+        fi
+    fi
     ;;
 esac
 
