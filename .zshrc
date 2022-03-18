@@ -27,7 +27,6 @@ if [[ -f "$irc_msgs" ]]; then
         echo "There are no unread IRC messages."
     fi
 fi
-;;
 
 # show prompt
 znap prompt
@@ -110,5 +109,6 @@ Linux)
         ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
         alias open='detach xdg-open'
     fi
+    ;;
 esac
 
