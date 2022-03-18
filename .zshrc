@@ -7,13 +7,29 @@
 
 source ~/zsh-snaps/zsh-snap/znap.zsh
 
-# display prompt
+# set prompt
 if type "starship" > /dev/null; then
     znap eval starship 'starship init zsh --print-full-init'
 else
     export PS1="%F{green}%n@%m%f:%F{blue}%~%f%(?..%F{red})$%f "
 fi
 
+
+# print irssi unread messages (fnotify)
+# must be done before prompt as otherwise it will be overwritten
+irc_msgs="$HOME/.irssi/fnotify"
+if [[ -f "$irc_msgs" ]]; then
+    echo ""
+    if [[ -s "$irc_msgs" ]]; then
+        echo "There are $(cat "$irc_msgs" | wc -l | awk '{$1=$1;print}') unread IRC messages."
+        echo -n "" > "$irc_msgs"
+    else
+        echo "There are no unread IRC messages."
+    fi
+fi
+;;
+
+# show prompt
 znap prompt
 
 # Base16 shell initialization
@@ -94,18 +110,5 @@ Linux)
         ln -sf "$HOME/.config/kitty/kitty_linux.conf" "$HOME/.config/kitty/kitty.conf"
         alias open='detach xdg-open'
     fi
-
-    # print irssi unread messages (fnotify)
-    irc_msgs="$HOME/.irssi/fnotify"
-    if [[ -f "$irc_msgs" ]]; then
-        echo ""
-        if [[ -s "$irc_msgs" ]]; then
-            echo "There are $(cat "$irc_msgs" | wc -l | awk '{$1=$1;print}') unread IRC messages."
-            echo -n "" > "$irc_msgs"
-        else
-            echo "There are no unread IRC messages."
-        fi
-    fi
-    ;;
 esac
 
