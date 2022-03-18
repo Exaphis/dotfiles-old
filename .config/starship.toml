@@ -1,2 +1,5 @@
+command_timeout = 1000
+
 [python]
 python_binary = "python3"
+
