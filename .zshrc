@@ -60,6 +60,9 @@ alias vi='vim'
 
 # enable vi mode for the zsh line editor
 bindkey -v
+
+# prevent 0.4s delay before entering vi mode (https://old.reddit.com/r/vim/comments/60jl7h/zsh_vimode_no_delay_entering_normal_mode/(
+KEYTIMEOUT=1
 bindkey '^R' history-incremental-search-backward
 bindkey -v '^?' backward-delete-char
 bindkey -a '^L' clear-screen
@@ -73,6 +76,12 @@ function config() {
     else
         git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@
     fi
+}
+
+# allow for mkdir and cd in one command
+function mkcd() {
+  dir="$*";
+  mkdir -p "$dir" && cd "$dir";
 }
 
 # home-specific plugins

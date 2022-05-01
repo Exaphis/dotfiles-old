@@ -8,6 +8,8 @@ Darwin)
     export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"
 
     alias ipython3=ipython
+
+    . "$HOME/.cargo/env"
     ;;
 Linux)
     if cat /etc/os-release | grep 'Manjaro' > /dev/null; then
